@@ -1,0 +1,293 @@
+@use './colors' as *;
+
+@font-face {
+	font-family: 'inter';
+	src: url('../assets/fonts/Inter-VariableFont_slnt\,wght.ttf');
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'inter', sans-serif;
+	background-color: $offwhite;
+}
+
+p {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.wrapper {
+	margin: 0 auto;
+	padding: 2em 1em;
+	width: 100%;
+	max-width: 1200px;
+
+	.header {
+		position: relative;
+		margin-bottom: 2em;
+
+		a {
+			padding: 1em;
+			color: $verydarkblue;
+			font-size: 15px;
+			text-decoration: none;
+			transition: color 0.3s;
+
+			&:hover {
+				color: $softred;
+			}
+		}
+
+		&__nav-btn {
+			position: absolute;
+			bottom: 0;
+			right: 0;
+			height: 100%;
+			background: none;
+			border: 1px solid transparent;
+			cursor: pointer;
+			z-index: 1000;
+
+			&--close {
+				display: none;
+			}
+
+			&:active &--close {
+				display: block;
+			}
+		}
+
+		&__nav-mobile {
+			position: fixed;
+			padding: 1em;
+			top: 0;
+			right: 0;
+			height: 100vh;
+			width: 70%;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			transform: translateX(100%);
+			transition: 0.5s cubic-bezier(0.65, 0.05, 0.36, 1);
+			background-color: $offwhite;
+
+			&--active {
+				transform: translateX(0);
+			}
+		}
+
+		&__nav-desktop {
+			display: none;
+		}
+	}
+
+	.news {
+		&__img-mobile {
+			max-width: 100%;
+			height: auto;
+		}
+
+		&__img-desktop {
+			display: none;
+		}
+
+		&__title {
+			padding-top: 1em;
+			font-size: 2.5rem;
+			font-weight: 800;
+		}
+
+		&__description {
+			padding: 2em 0;
+			color: $darkgrayishblue;
+		}
+
+		&__btn {
+			padding: 1em 2em;
+			background-color: $softred;
+			color: $offwhite;
+			border: none;
+			text-transform: uppercase;
+			letter-spacing: 0.2em;
+			transition: background-color 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				background-color: $verydarkblue;
+			}
+		}
+	}
+
+	.popular {
+		margin-top: 2em;
+		padding: 1em;
+		background-color: $verydarkblue;
+
+		&__heading {
+			color: $softorange;
+			font-size: 2rem;
+		}
+
+		&__box {
+			padding: 2em 0;
+			border-bottom: 1px solid $grayishblue;
+
+			&:last-child {
+				padding-bottom: 1em;
+				border-bottom: none;
+			}
+		}
+
+		&__title {
+			color: $offwhite;
+			transition: color 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				color: $softorange;
+			}
+		}
+
+		&__text {
+			padding-top: 1em;
+			color: $grayishblue;
+		}
+	}
+
+	.categories {
+		padding: 2em 0;
+
+		&__boxes {
+			display: grid;
+			grid-template-columns: 1fr 2fr;
+			gap: 1em;
+			padding: 1em 0;
+		}
+
+		img {
+			grid-column: 1/2;
+			max-width: 100%;
+			height: auto;
+		}
+
+		&__box {
+			grid-column: 2/3;
+		}
+
+		&__heading {
+			color: $grayishblue;
+			font-size: 2rem;
+		}
+
+		&__title {
+			padding: 1em 0;
+			font-size: 1rem;
+			font-weight: 800;
+			transition: color 0.3s;
+			cursor: pointer;
+
+			&:hover {
+				color: $softred;
+			}
+		}
+
+		&__text {
+			color: $darkgrayishblue;
+		}
+	}
+
+	.attribution {
+		font-size: 11px;
+		text-align: center;
+
+		a {
+			color: hsl(228, 45%, 44%);
+		}
+	}
+}
+
+//media
+
+@media (min-width: 576px) {
+	.wrapper {
+		.header {
+			margin-bottom: 3em;
+
+			&__nav-mobile,
+			&__nav-btn {
+				display: none;
+			}
+
+			&__nav-desktop {
+				display: block;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+
+				a {
+					padding: 0 0 0 3em;
+					color: $darkgrayishblue;
+				}
+			}
+		}
+
+		main {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+
+			.news {
+				padding-right: 10px;
+				width: 66%;
+
+				&__img-mobile {
+					display: none;
+				}
+
+				&__img-desktop {
+					display: block;
+					margin-bottom: 1em;
+					max-width: 100%;
+					height: auto;
+				}
+
+				&__box {
+					display: flex;
+					justify-content: space-between;
+				}
+				&__title {
+					padding-top: 0;
+					width: 40%;
+					align-items: center;
+					font-size: 3rem;
+				}
+
+				&__text {
+					padding-top: .5em;
+					width: 48%;
+				}
+
+				&__description {
+					padding-top: 0;
+				}
+			}
+
+			.popular {
+				margin-top: 0;
+				width: 33%;
+			}
+
+			.categories {
+				display: flex;
+				justify-content: space-between;
+			}
+		}
+	}
+}
