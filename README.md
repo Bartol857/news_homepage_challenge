@@ -21,7 +21,7 @@ This is a solution to the [News homepage challenge on Frontend Mentor](https://w
 ### Links
 
 - Solution URL: [Solution](https://github.com/Bartol857/news_homepage_challenge)
-- Live Site URL: [Live site](https://your-live-site-url.com)
+- Live Site URL: [Live site](https://bartol857.github.io/news_homepage_challenge/)
 
 ## My process
 
